@@ -10,16 +10,16 @@ app.use(express.urlencoded({ extended: false }))
 //parse json
 app.use(express.json())
 
+app.get('/api/people', (req, res) => {
+    res.status(200).json({ success: true, data: people})
+})
+
 app.post('/login', (req, res) => {
     const { name } = req.body
     if(name){
         return res.status(200).send(`welcome ${name}`)
     }
     res.status(401).send('Please Provide Credentials')
-})
-
-app.get('/api/people', (req, res) => {
-    res.status(200).json({ success: true, data: people})
 })
 
 app.post('/api/people', (req, res) => {
